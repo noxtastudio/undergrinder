@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>💀 …releases… · undergrinder records limited</title>
+<meta name="description" content="Undergrinder Records Limited — the archive. Catalogue URL001–URL104, 2013–2025. Gorenoise, harshnoise, power electronics, porngrind and worse." />
+<link rel="icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="releases.css" />
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="scan" aria-hidden="true"></div>
+
+<!-- ============ NAV (shared) ============ -->
+<header class="nav">
+  <div class="wrap row">
+    <a class="brandmark" href="index.html" aria-label="undergrinder.studio home">
+      <span class="mk">🥩</span>
+      <span class="wm">under<b>grinder</b>.studio</span>
+    </a>
+    <nav class="links" aria-label="primary">
+      <a href="index.html">home</a>
+      <a class="gated" href="cherries.html"><span class="g">🍒</span> cherries <span class="lk">🔒</span></a>
+      <a class="cur" href="releases.html"><span class="g">💀</span> releases</a>
+      <a class="gated" href="promotions.html">promotion <span class="lk">🔒</span></a>
+      <a href="contact.html">contact</a>
+    </nav>
+    <button class="burger" aria-label="open menu" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer">
+  <div class="scrim" data-close></div>
+  <div class="panel" role="dialog" aria-label="menu">
+    <div class="dhead">
+      <span class="kicker">menu</span>
+      <button class="x" data-close aria-label="close menu">✕</button>
+    </div>
+    <a href="index.html">🥩 home</a>
+    <a href="cherries.html">🍒 cherries <span class="lk">🔒</span></a>
+    <a href="releases.html">💀 releases</a>
+    <a href="promotions.html">promotion <span class="lk">🔒</span></a>
+    <a href="contact.html">contact</a>
+  </div>
+</div>
+
+<!-- ============ ARCHIVE HEADER ============ -->
+<section class="arc-head">
+  <div class="abg" aria-hidden="true"></div>
+  <div class="aveil" aria-hidden="true"></div>
+  <div class="wrap inner">
+    <div class="kicker">undergrinder records limited · the archive</div>
+    <h1 class="black">…releases<span class="dot">…</span></h1>
+    <p class="lede">the catalogue of the dead king. <b>2013–2025</b>, one hundred and four codes deep — gorenoise, harshnoise, power electronics, porngrind and worse, pressed to cdr and dumped to the wires. <b>downloads are free.</b> the rest sleeps in the ledger below.</p>
+    <div class="stats">
+      <span><b>104</b> catalogue codes</span>
+      <span><b>URL001</b>–<b>URL104</b></span>
+      <span><b>2013</b>–<b>2025</b></span>
+      <span>cdr <b>+</b> digital</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FILTER BAR ============ -->
+<section class="filters">
+  <div class="wrap row">
+    <label class="search">
+      <svg viewBox="0 0 24 24"><path d="M10 4a6 6 0 104.47 10.03l4.25 4.25 1.41-1.41-4.25-4.25A6 6 0 0010 4zm0 2a4 4 0 110 8 4 4 0 010-8z"/></svg>
+      <input id="search" type="search" placeholder="search title / artist / code…" aria-label="search releases" />
+    </label>
+    <div class="chips" id="genreChips" role="group" aria-label="filter by genre"></div>
+    <span class="fspacer"></span>
+    <span class="fselect"><select id="yearSel" aria-label="filter by year"><option value="all">all years</option></select></span>
+    <span class="fselect"><select id="sortSel" aria-label="sort">
+      <option value="code">by catalogue №</option>
+      <option value="new">newest first</option>
+      <option value="old">oldest first</option>
+    </select></span>
+  </div>
+</section>
+
+<!-- ============ GRID ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="countline"><span><b id="countN">0</b> in the archive</span><span class="l"></span><span>free downloads where digitised</span></div>
+    <div class="rgrid" id="grid"></div>
+    <div class="empty" id="empty">
+      <div class="big black">…nothing in the pit…</div>
+      <p>no release matches that filter.</p>
+      <button class="btn ghost" id="clearFilters" type="button">clear filters</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE LEDGER (full 104) ============ -->
+<section class="sec ledger">
+  <div class="wrap">
+    <div class="head2">
+      <div>
+        <div class="kicker">accessions ledger · URL001 → URL104</div>
+        <h2 class="black">…the full catalogue…</h2>
+      </div>
+      <div class="legend">
+        <span><i class="live"></i> in the archive — click to open</span>
+        <span><i></i> lost / not catalogued</span>
+      </div>
+    </div>
+    <div class="catwall" id="ledger"></div>
+    <p class="lede" style="margin-top:22px;color:var(--ash-dim);font-size:12.5px">…most of the catalogue lived and died on cdr… …only a fraction has been dragged into the digital… …more will surface as the tapes are ripped…</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER (shared) ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="top">
+      <div class="lockup">
+        <div class="wm black">under<b>grinder</b>.studio</div>
+        <p>undergrinder records limited 2013–2025<br>the archive · …disgusting as always…</p>
+      </div>
+      <div class="ext">
+        <span class="kicker" style="margin-bottom:6px">find us in the dark</span>
+        <a href="https://www.discogs.com/seller/EDROPS/profile" target="_blank" rel="noopener">discogs — seller <span class="ar">▸</span></a>
+        <a href="https://www.youtube.com/@urlimited0" target="_blank" rel="noopener">youtube — @urlimited0 <span class="ar">▸</span></a>
+        <a href="contact.html">contact / submissions <span class="ar">▸</span></a>
+      </div>
+    </div>
+    <div class="divider" style="margin-top:42px">
+      <span class="mark"></span>
+      <span class="reg">cat. url001–104</span>
+      <span class="bar"></span>
+      <span class="reg">est. mmxiii</span>
+      <span class="mark"></span>
+    </div>
+    <div class="base">
+      <span>…disgusting as always…</span>
+      <span>poland · diy · anti-commercial</span>
+      <span>v1.0</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ QUICK VIEW ============ -->
+<div class="qv" id="qv" aria-hidden="true">
+  <div class="qv-scrim" data-qclose></div>
+  <div class="qv-panel" role="dialog" aria-modal="true" aria-label="release details">
+    <button class="qv-x" data-qclose aria-label="close quick view">✕</button>
+    <div class="qv-cover"><img id="qvCover" src="" alt="" /></div>
+    <div class="qv-info">
+      <div class="qv-code" id="qvCode"></div>
+      <h2 class="black" id="qvTitle"></h2>
+      <div class="qv-artist" id="qvArtist"></div>
+      <dl class="qv-meta" id="qvMeta"></dl>
+      <div class="qv-actions" id="qvActions"></div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script src="releases.js"></script>
+</body>
+</html>

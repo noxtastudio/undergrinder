@@ -1,0 +1,156 @@
+/* =========================================================
+   releases.css — Undergrinder Records Limited · the archive
+   extends styles.css tokens. release-card grid + filter bar + ledger.
+   ========================================================= */
+
+/* ---- archive header ---- */
+.arc-head{position:relative;overflow:hidden;border-bottom:1px solid var(--hair);padding-block:clamp(46px,8vh,86px)}
+.arc-head .abg{position:absolute;inset:0;background:url("images/url-logo.jpg") right -8% center/contain no-repeat;filter:grayscale(1) brightness(.22) contrast(1.1);opacity:.4}
+.arc-head .aveil{position:absolute;inset:0;background:linear-gradient(90deg,var(--void) 30%,rgba(10,10,10,.5) 70%,transparent)}
+.arc-head .inner{position:relative;z-index:2}
+.arc-head h1{margin:14px 0 0;font-family:"Grenze Gotisch",serif;font-weight:700;font-size:clamp(44px,8vw,104px);line-height:.86}
+.arc-head h1 .dot{color:var(--blood-bright)}
+.arc-head .lede{margin:18px 0 0;color:var(--ash);max-width:58ch;font-size:15px;line-height:1.8}
+.arc-head .lede b{color:var(--bone);font-weight:400}
+.arc-head .stats{margin-top:26px;display:flex;gap:26px;flex-wrap:wrap;color:var(--ash-dim);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.arc-head .stats b{color:var(--bone);font-weight:400;font-size:14px}
+
+/* ---- filter bar ---- */
+.filters{position:sticky;top:64px;z-index:120;background:rgba(7,7,7,.94);backdrop-filter:blur(7px);border-bottom:1px solid var(--hair)}
+.filters .row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-block:14px}
+.search{display:flex;align-items:center;gap:10px;border:1px solid var(--hair-strong);background:rgba(0,0,0,.45);padding:0 12px;min-width:210px;flex:1 1 210px;max-width:340px}
+.search svg{width:14px;height:14px;fill:var(--ash-dim);flex:none}
+.search input{flex:1;min-width:0;background:transparent;border:none;outline:none;color:var(--bone);font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.04em;padding:11px 0}
+.search input::placeholder{color:var(--ash-dim)}
+.chips{display:flex;gap:7px;flex-wrap:wrap}
+.fchip{
+  font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ash);background:transparent;border:1px solid var(--hair-strong);padding:8px 11px;cursor:pointer;
+  transition:color .15s,border-color .15s,background .15s;white-space:nowrap;
+}
+.fchip:hover{color:var(--bone);border-color:var(--hair-strong)}
+.fchip[aria-pressed="true"]{background:var(--blood);border-color:var(--blood);color:var(--bone)}
+.fspacer{flex:1}
+.fselect{position:relative}
+.fselect select{
+  appearance:none;-webkit-appearance:none;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ash);background:rgba(0,0,0,.45);border:1px solid var(--hair-strong);padding:9px 30px 9px 12px;cursor:pointer;
+}
+.fselect::after{content:"▾";position:absolute;right:11px;top:50%;transform:translateY(-50%);color:var(--ash-dim);pointer-events:none;font-size:10px}
+.fselect select:focus{outline:none;border-color:var(--blood)}
+
+/* ---- count line ---- */
+.countline{display:flex;align-items:center;gap:12px;color:var(--ash-dim);font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:22px 0 4px}
+.countline b{color:var(--blood-bright);font-weight:400}
+.countline .l{flex:1;height:1px;background:var(--hair)}
+
+/* ---- the grid ---- */
+.rgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,20px);padding-top:8px}
+@media (max-width:1080px){.rgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.rgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:440px){.rgrid{grid-template-columns:minmax(0,1fr)}}
+
+.rcard{
+  display:flex;flex-direction:column;min-width:0;background:var(--panel);border:1px solid var(--hair-strong);
+  transition:border-color .18s,transform .18s,box-shadow .18s;
+}
+.rcard:hover{transform:translateY(-3px);border-color:var(--hair-strong);box-shadow:0 18px 40px -24px #000}
+.rcard.hide{display:none}
+.rcard .art{position:relative;aspect-ratio:1;overflow:hidden;background:#000;border-bottom:1px solid var(--hair)}
+.rcard .art img{width:100%;height:100%;object-fit:cover;transition:transform .45s,filter .25s;filter:contrast(1.05)}
+.rcard:hover .art img{transform:scale(1.05)}
+.rcard .code{position:absolute;top:9px;left:9px;background:rgba(0,0,0,.72);border:1px solid var(--hair-strong);font-size:9.5px;letter-spacing:.18em;color:var(--bone);padding:3px 7px}
+.rcard .gtag{position:absolute;top:9px;right:9px;background:rgba(154,20,20,.85);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone);padding:3px 7px}
+.rcard .yr{position:absolute;bottom:9px;right:9px;background:rgba(0,0,0,.65);font-size:9.5px;letter-spacing:.16em;color:var(--ash);padding:2px 7px}
+.rcard .pbtn{
+  position:absolute;left:9px;bottom:9px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bone);
+  background:rgba(0,0,0,.55);display:grid;place-items:center;cursor:pointer;transition:background .18s,border-color .18s,transform .15s;
+}
+.rcard .pbtn svg{width:14px;height:14px;fill:var(--bone);margin-left:2px}
+.rcard .pbtn.pause svg{margin-left:0}
+.rcard .pbtn:hover{background:var(--blood);border-color:var(--blood);transform:scale(1.06)}
+.rcard .pbar{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(232,230,225,.12);opacity:0;transition:opacity .2s}
+.rcard.playing .pbar{opacity:1}
+.rcard .pbar .pf{height:100%;width:0;background:var(--blood)}
+.rcard .ttl{font-family:"Grenze Gotisch",serif;font-weight:700;font-size:19px;line-height:1.12;text-wrap:balance}
+.rcard .body{padding:13px 13px 15px;display:flex;flex-direction:column;gap:7px;flex:1}
+.rcard .artist{font-size:11.5px;color:var(--ash);letter-spacing:.02em}
+.rcard .dl{
+  margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;
+  border:1px solid var(--hair-strong);color:var(--bone);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+  padding:10px;transition:background .16s,color .16s,border-color .16s;
+}
+.rcard .dl:hover{background:var(--bone);color:var(--void);border-color:var(--bone)}
+.rcard .dl svg{width:12px;height:12px;fill:currentColor}
+/* archived (cover-only) releases: no digital download yet */
+.rcard .dl.nozip{cursor:default;color:var(--ash-dim);border-style:dashed;background:transparent}
+.rcard .dl.nozip:hover{background:transparent;color:var(--ash-dim);border-color:var(--hair-strong)}
+.rcard .artist.arc{color:var(--ash-dim);font-style:italic}
+
+/* empty state */
+.empty{display:none;text-align:center;padding:60px 20px;color:var(--ash-dim)}
+.empty.show{display:block}
+.empty .big{font-family:"Grenze Gotisch",serif;font-weight:700;font-size:34px;color:var(--ash);margin-bottom:8px}
+.empty button{margin-top:18px}
+
+/* ---- the ledger (full 104) ---- */
+.ledger{border-top:1px solid var(--hair);background:var(--void2)}
+.ledger .head2{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:24px}
+.ledger h2{margin:10px 0 0;font-family:"Grenze Gotisch",serif;font-weight:700;font-size:clamp(26px,4vw,44px);line-height:1}
+.ledger .legend{display:flex;gap:16px;flex-wrap:wrap;color:var(--ash-dim);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;align-items:center}
+.ledger .legend i{display:inline-block;width:11px;height:11px;margin-right:6px;vertical-align:-1px;border:1px solid var(--hair-strong)}
+.ledger .legend i.live{background:var(--blood);border-color:var(--blood)}
+.catwall{display:flex;flex-wrap:wrap;gap:4px}
+.cstamp{
+  font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.04em;color:var(--ash-dim);
+  border:1px solid var(--hair);background:rgba(255,255,255,.012);padding:6px 7px;min-width:54px;text-align:center;
+  text-decoration:none;cursor:default;
+}
+.cstamp.live{color:var(--blood-bright);border-color:rgba(192,23,23,.5);cursor:pointer;background:rgba(154,20,20,.06)}
+.cstamp.live:hover{background:var(--blood);color:var(--bone);border-color:var(--blood)}
+
+/* flash when a ledger link jumps to a card */
+@keyframes cardflash{0%,100%{box-shadow:0 0 0 0 rgba(192,23,23,0)}30%{box-shadow:0 0 0 2px var(--blood),0 18px 40px -20px rgba(192,23,23,.6)}}
+.rcard.flash{animation:cardflash 1.1s ease}
+.rcard{cursor:pointer}
+.rcard:focus-visible{outline:2px solid var(--blood);outline-offset:2px}
+
+/* ====================== QUICK VIEW ====================== */
+.qv{position:fixed;inset:0;z-index:600;display:flex;align-items:center;justify-content:center;
+  padding:clamp(14px,3vw,40px);visibility:hidden;opacity:0;transition:opacity .25s,visibility .25s}
+.qv.open{visibility:visible;opacity:1}
+.qv-scrim{position:absolute;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(4px)}
+.qv-panel{position:relative;z-index:2;width:min(940px,100%);max-height:90vh;overflow:auto;
+  display:grid;grid-template-columns:minmax(0,400px) 1fr;gap:clamp(20px,3vw,40px);
+  background:var(--void2);border:1px solid var(--hair-strong);
+  box-shadow:0 50px 130px -40px #000,0 0 70px -34px rgba(192,23,23,.5);
+  padding:clamp(20px,3vw,34px);transform:translateY(14px) scale(.99);transition:transform .28s cubic-bezier(.2,.7,.2,1)}
+.qv.open .qv-panel{transform:none}
+@media (prefers-reduced-motion:reduce){.qv,.qv-panel{transition:none}}
+.qv-x{position:absolute;top:10px;right:12px;z-index:3;background:none;border:none;color:var(--ash);
+  font-size:22px;line-height:1;cursor:pointer;padding:6px;transition:color .15s}
+.qv-x:hover{color:var(--blood-bright)}
+.qv-cover{position:relative;border:1px solid var(--hair-strong);background:#000;align-self:start}
+.qv-cover::before{content:"";position:absolute;inset:6px;border:1px solid var(--hair);pointer-events:none;z-index:2}
+.qv-cover img{width:100%;display:block;aspect-ratio:1;object-fit:cover;filter:contrast(1.05)}
+.qv-info{min-width:0;display:flex;flex-direction:column}
+.qv-code{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.24em;color:var(--ash-dim);
+  border:1px solid var(--hair-strong);align-self:flex-start;padding:4px 9px}
+.qv-info h2{margin:16px 0 0;font-family:"Grenze Gotisch",serif;font-weight:700;
+  font-size:clamp(28px,3.4vw,46px);line-height:1;text-wrap:balance}
+.qv-artist{margin:10px 0 0;color:var(--ash);font-size:15px;letter-spacing:.02em}
+.qv-meta{margin:22px 0 0;border-top:1px solid var(--hair)}
+.qv-row{display:grid;grid-template-columns:108px 1fr;gap:14px;padding:11px 0;border-bottom:1px solid var(--hair)}
+.qv-row dt{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ash-dim);margin:0}
+.qv-row dd{margin:0;color:var(--bone);font-size:13.5px;line-height:1.5}
+.qv-cdr{display:inline-flex;align-items:center;gap:7px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;border:1px solid}
+.qv-cdr::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.qv-cdr.yes{color:var(--bone);border-color:var(--hair-strong)}      /* available — white, not green */
+.qv-cdr.no{color:var(--blood-bright);border-color:rgba(192,23,23,.5)} /* sold out — red */
+.qv-actions{margin-top:auto;padding-top:24px}
+.qv-nozip{font-size:12.5px;letter-spacing:.04em;color:var(--ash-dim)}
+.qv-nozip b{color:var(--ash);font-weight:400}
+@media (max-width:720px){
+  .qv-panel{grid-template-columns:1fr;gap:18px}
+  .qv-cover{max-width:280px}
+}

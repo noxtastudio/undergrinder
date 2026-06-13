@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>…contact… · undergrinder.studio</title>
+<meta name="description" content="Contact Undergrinder Records Limited / Do You Like Cherries? Productions — Discogs, YouTube, and submissions for artists wanting to release." />
+<link rel="icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="scan" aria-hidden="true"></div>
+
+<!-- ============ NAV (shared) ============ -->
+<header class="nav">
+  <div class="wrap row">
+    <a class="brandmark" href="index.html" aria-label="undergrinder.studio home">
+      <span class="mk">🥩</span>
+      <span class="wm">under<b>grinder</b>.studio</span>
+    </a>
+    <nav class="links" aria-label="primary">
+      <a href="index.html">home</a>
+      <a class="gated" href="cherries.html"><span class="g">🍒</span> cherries <span class="lk">🔒</span></a>
+      <a href="releases.html"><span class="g">💀</span> releases</a>
+      <a class="gated" href="promotions.html">promotion <span class="lk">🔒</span></a>
+      <a class="cur" href="contact.html">contact</a>
+    </nav>
+    <button class="burger" aria-label="open menu" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer">
+  <div class="scrim" data-close></div>
+  <div class="panel" role="dialog" aria-label="menu">
+    <div class="dhead">
+      <span class="kicker">menu</span>
+      <button class="x" data-close aria-label="close menu">✕</button>
+    </div>
+    <a href="index.html">🥩 home</a>
+    <a href="cherries.html">🍒 cherries <span class="lk">🔒</span></a>
+    <a href="releases.html">💀 releases</a>
+    <a href="promotions.html">promotion <span class="lk">🔒</span></a>
+    <a href="contact.html">contact</a>
+  </div>
+</div>
+
+<!-- ============ HEADER + ETHOS ============ -->
+<section class="con-head">
+  <div class="cbg" aria-hidden="true"></div>
+  <div class="cveil" aria-hidden="true"></div>
+  <div class="wrap inner">
+    <div class="kicker">contact · submissions</div>
+    <h1 class="black">…contact<span class="dot">…</span></h1>
+    <p class="ethos">
+      …undergrinder is a dumping ground for the unlistenable… <b>gorenoise, harshnoise, power electronics, porngrind and worse</b>, pressed to cdr and dragged into the wires since 2013. no charts, no playlists, no clean masters — <b>disgusting as always</b>. if you make something vile enough, or you want a physical out of the pit, the doors below are open.
+    </p>
+  </div>
+</section>
+
+<!-- ============ BODY ============ -->
+<section class="con-body">
+  <div class="wrap con-grid">
+
+    <!-- left: channels -->
+    <div class="chan-col">
+      <div class="kicker">find us in the dark</div>
+
+      <a class="channel" href="https://www.discogs.com/seller/EDROPS/profile" target="_blank" rel="noopener">
+        <span class="gx" aria-hidden="true">💿</span>
+        <span class="meta">
+          <span class="nm black">discogs</span>
+          <span class="hd">seller <b>·</b> EDROPS <b>·</b> …buy / trade physicals…</span>
+        </span>
+        <span class="go" aria-hidden="true">▸</span>
+      </a>
+
+      <a class="channel" href="https://www.youtube.com/@urlimited0" target="_blank" rel="noopener">
+        <span class="gx" aria-hidden="true">📺</span>
+        <span class="meta">
+          <span class="nm black">youtube</span>
+          <span class="hd">@urlimited0 <b>·</b> …watch / listen…</span>
+        </span>
+        <span class="go" aria-hidden="true">▸</span>
+      </a>
+
+      <a class="channel" href="mailto:contact@undergrinder.studio">
+        <span class="gx" aria-hidden="true">✉</span>
+        <span class="meta">
+          <span class="nm black">email</span>
+          <span class="hd">contact@undergrinder.studio <b>·</b> …demos / orders / noise…</span>
+        </span>
+        <span class="go" aria-hidden="true">▸</span>
+      </a>
+
+      <div class="chan-aside">
+        <div class="kicker">before you send</div>
+        <p>…send <b>links, not attachments</b>… bandcamp, soundcloud, a private youtube… tell us the <b>project name</b> and the <b>genre</b>… we answer the ones that disturb us… …silence is also an answer…</p>
+      </div>
+    </div>
+
+    <!-- right: submission form -->
+    <div class="subm">
+      <h2 class="black">…crawl out of the dark…</h2>
+      <p class="lead">want a release on <b>undergrinder records limited</b> or <b>do you like cherries? productions</b>? feed it to the form. it opens your mail client — nothing is stored here.</p>
+
+      <form id="submForm" novalidate>
+        <div class="row2">
+          <div class="field">
+            <label for="f-project">project / artist <span class="req">*</span></label>
+            <input id="f-project" name="project" type="text" placeholder="…your noise…" autocomplete="off" />
+          </div>
+          <div class="field">
+            <label for="f-email">your email <span class="req">*</span></label>
+            <input id="f-email" name="email" type="email" placeholder="you@…" autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-genre">genre</label>
+          <select id="f-genre" name="genre">
+            <option value="">…choose the filth…</option>
+            <option>gorenoise</option>
+            <option>harshnoise</option>
+            <option>porngrind</option>
+            <option>goregrind</option>
+            <option>power electronics</option>
+            <option>noisecore</option>
+            <option>cybergrind</option>
+            <option>…other / unclassifiable…</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="f-links">links</label>
+          <input id="f-links" name="links" type="text" placeholder="bandcamp / soundcloud / youtube — not files" autocomplete="off" />
+        </div>
+
+        <div class="field">
+          <label for="f-message">the noise <span class="req">*</span></label>
+          <textarea id="f-message" name="message" placeholder="…what is it… …how disgusting… …what do you want from us…"></textarea>
+        </div>
+
+        <div class="actions">
+          <button class="btn blood" type="submit">send it into the pit <span class="arr">▸</span></button>
+          <span class="note">opens your mail app to <b>contact@undergrinder.studio</b>. swap for Formspree / Cloudflare to receive in-browser.</span>
+        </div>
+
+        <div class="sent" id="submSent" role="status">…mail client opened… <b>finish sending from there.</b> …silence is also an answer…</div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER (shared) ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="top">
+      <div class="lockup">
+        <div class="wm black">under<b>grinder</b>.studio</div>
+        <p>undergrinder records limited 2013–2025<br>do you like cherries? productions 2026</p>
+      </div>
+      <div class="ext">
+        <span class="kicker" style="margin-bottom:6px">find us in the dark</span>
+        <a href="https://www.discogs.com/seller/EDROPS/profile" target="_blank" rel="noopener">discogs — seller <span class="ar">▸</span></a>
+        <a href="https://www.youtube.com/@urlimited0" target="_blank" rel="noopener">youtube — @urlimited0 <span class="ar">▸</span></a>
+        <a href="mailto:contact@undergrinder.studio">contact@undergrinder.studio <span class="ar">▸</span></a>
+      </div>
+    </div>
+    <div class="divider" style="margin-top:42px">
+      <span class="mark"></span>
+      <span class="reg">submissions open</span>
+      <span class="bar"></span>
+      <span class="reg">est. mmxiii</span>
+      <span class="mark"></span>
+    </div>
+    <div class="base">
+      <span>…disgusting as always…</span>
+      <span>poland · diy · anti-commercial</span>
+      <span>v1.0</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script src="contact.js"></script>
+</body>
+</html>

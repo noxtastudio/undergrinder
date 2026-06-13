@@ -1,0 +1,154 @@
+/* =========================================================
+   cherries.css — Do You Like Cherries? Productions
+   the gate + the vault. extends styles.css tokens.
+   ========================================================= */
+
+/* ===================== THE GATE ===================== */
+.gate{
+  position:fixed;inset:0;z-index:500;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--void);overflow:hidden;
+  transition:opacity .5s ease, visibility .5s;
+}
+body.unlocked .gate{opacity:0;visibility:hidden;pointer-events:none}
+body.unlocked{overflow:auto}
+body.locked{overflow:hidden}
+
+.gate-bg{
+  position:absolute;inset:0;
+  background:url("images/dylc-logo.jpg") center/min(86vmin,720px) no-repeat;
+  filter:grayscale(1) contrast(1.05) brightness(.26);
+  opacity:.5;
+}
+.gate-vig{position:absolute;inset:0;background:
+  radial-gradient(120% 100% at 50% 45%,transparent 0%,rgba(10,10,10,.7) 55%,var(--void) 100%);}
+.gate-bg2{position:absolute;inset:0;mix-blend-mode:screen;opacity:.5;
+  background:radial-gradient(60% 50% at 50% 50%,rgba(154,20,20,.22),transparent 70%);}
+
+.gate-card{
+  position:relative;z-index:3;width:min(92vw,520px);
+  background:linear-gradient(180deg,rgba(20,18,18,.86),rgba(8,8,8,.92));
+  border:1px solid var(--hair-strong);
+  box-shadow:0 50px 120px -40px #000, 0 0 70px -30px rgba(192,23,23,.45);
+  padding:clamp(28px,5vw,46px);
+  text-align:center;
+}
+.gate-card::before,.gate-card::after{content:"";position:absolute;width:18px;height:18px;border:1px solid var(--blood)}
+.gate-card::before{top:8px;left:8px;border-right:none;border-bottom:none}
+.gate-card::after{bottom:8px;right:8px;border-left:none;border-top:none}
+
+.seal{
+  width:74px;height:74px;margin:0 auto 22px;border-radius:50%;
+  border:1px solid rgba(192,23,23,.55);display:grid;place-items:center;
+  background:radial-gradient(circle at 50% 40%,rgba(154,20,20,.35),rgba(0,0,0,.6));
+  box-shadow:0 0 34px -8px rgba(192,23,23,.6), inset 0 0 18px rgba(0,0,0,.7);
+  position:relative;
+}
+.seal::after{content:"";position:absolute;inset:-7px;border:1px dashed rgba(192,23,23,.35);border-radius:50%}
+.seal span{font-size:30px;filter:saturate(1.1)}
+
+.gate-card .kicker{justify-content:center;margin-bottom:16px;color:var(--blood-bright)}
+.gate-card .kicker::before{background:var(--blood)}
+.gate-card h1{
+  margin:0;font-family:"Grenze Gotisch",serif;font-weight:700;color:var(--blood-bright);
+  font-size:clamp(30px,6vw,52px);line-height:1.02;
+}
+.gate-card .voice{margin:20px auto 0;max-width:40ch;color:var(--ash);font-size:14px;line-height:1.8;text-align:center}
+.gate-card .voice b{color:var(--bone);font-weight:400}
+
+.gate-form{margin-top:30px;display:flex;flex-direction:column;gap:12px}
+.gate-field{
+  display:flex;align-items:stretch;border:1px solid var(--hair-strong);background:rgba(0,0,0,.5);
+  transition:border-color .18s, box-shadow .18s;
+}
+.gate-field:focus-within{border-color:var(--blood);box-shadow:0 0 0 1px rgba(192,23,23,.4),0 0 30px -10px rgba(192,23,23,.6)}
+.gate-field .pre{display:grid;place-items:center;padding:0 14px;color:var(--blood-bright);border-right:1px solid var(--hair);font-size:15px}
+.gate-field input{
+  flex:1;min-width:0;background:transparent;border:none;outline:none;color:var(--bone);
+  font-family:"Space Mono",monospace;font-size:15px;letter-spacing:.18em;padding:15px 14px;
+}
+.gate-field input::placeholder{color:var(--ash-dim);letter-spacing:.12em}
+.gate-form .enter{justify-content:center;padding:15px}
+.gate-note{margin-top:6px;font-size:11px;letter-spacing:.04em;color:var(--ash-dim);line-height:1.7}
+.gate-note a{color:var(--ash);text-decoration:underline;text-underline-offset:3px}
+.gate-note a:hover{color:var(--blood-bright)}
+.gate-msg{min-height:18px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--blood-bright);opacity:0;transition:opacity .15s}
+.gate-msg.show{opacity:1}
+.gate-back{margin-top:20px;display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ash-dim);text-decoration:none}
+.gate-back:hover{color:var(--bone)}
+
+@media (prefers-reduced-motion:no-preference){
+  .gate-card.deny{animation:deny .4s cubic-bezier(.36,.07,.19,.97)}
+}
+@keyframes deny{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}30%,50%,70%{transform:translateX(-8px)}40%,60%{transform:translateX(8px)}}
+.gate-card.deny{border-color:var(--blood)}
+
+/* ===================== THE VAULT ===================== */
+.vault{display:none}
+body.unlocked .vault{display:block}
+
+/* vault hero */
+.vhero{position:relative;overflow:hidden;border-bottom:1px solid var(--hair);padding-block:clamp(48px,8vh,96px)}
+.vhero .vbg{position:absolute;inset:0;background:url("images/dylc-logo.jpg") right center/cover no-repeat;filter:grayscale(1) brightness(.2) contrast(1.1);opacity:.42}
+.vhero .vveil{position:absolute;inset:0;background:linear-gradient(90deg,var(--void) 18%,rgba(10,10,10,.55) 60%,rgba(10,10,10,.2) 100%)}
+.vhero .inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,64px);align-items:center}
+.vhero .badge{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(192,23,23,.5);color:var(--blood-bright);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;padding:6px 12px}
+.vhero .badge .d{width:6px;height:6px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+.vhero h1{margin:18px 0 0;font-family:"Grenze Gotisch",serif;font-weight:700;color:var(--blood-bright);font-size:clamp(38px,7vw,84px);line-height:.9}
+.vhero .voice{margin:18px 0 0;color:var(--ash);font-size:15px;line-height:1.85;max-width:44ch}
+.vhero .voice b{color:var(--bone);font-weight:400}
+.vhero .vmeta{margin-top:24px;display:flex;gap:18px;flex-wrap:wrap;color:var(--ash-dim);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.vhero .vmeta b{color:var(--ash);font-weight:400}
+.vhero .vlogo{position:relative;border:1px solid rgba(192,23,23,.4);background:#000;padding:12px;box-shadow:0 0 50px -18px rgba(192,23,23,.5),0 30px 60px -30px #000;justify-self:end;max-width:360px}
+.vhero .vlogo::before{content:"";position:absolute;inset:6px;border:1px solid var(--hair);pointer-events:none}
+.vhero .vlogo img{width:100%;filter:contrast(1.06)}
+
+/* featured release */
+.feat{position:relative;overflow:hidden;border-bottom:1px solid var(--hair)}
+.feat .fbg{position:absolute;inset:0;background:url("images/dylcx001-cover.jpg") center/cover;filter:grayscale(1) brightness(.16) contrast(1.1);transform:scale(1.1)}
+.feat .fveil{position:absolute;inset:0;background:linear-gradient(to right,var(--void) 8%,rgba(10,10,10,.72) 55%,var(--void) 100%)}
+.feat .inner{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,400px) 1fr;gap:clamp(28px,5vw,68px);align-items:center;padding-block:clamp(56px,9vh,110px)}
+.feat .cover{position:relative;border:1px solid var(--hair-strong);box-shadow:0 40px 80px -30px #000}
+.feat .cover img{width:100%;display:block}
+.feat .cover .flag{position:absolute;top:14px;left:14px;background:var(--blood);color:var(--bone);font-size:10px;letter-spacing:.24em;text-transform:uppercase;padding:5px 10px}
+.feat h2{margin:14px 0 0;font-family:"Grenze Gotisch",serif;font-weight:700;font-size:clamp(30px,5vw,60px);line-height:.96}
+.feat .desc{margin:14px 0 0;color:var(--ash);font-size:15px;max-width:46ch}
+.feat .actions{margin-top:22px;display:flex;gap:14px;flex-wrap:wrap}
+
+/* dispatches grid */
+.dispatch .head{margin-bottom:42px}
+.relgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.4vw,24px)}
+.relcard{border:1px solid var(--hair-strong);background:var(--panel);display:flex;flex-direction:column;transition:border-color .18s,transform .18s}
+.relcard:hover{border-color:var(--hair-strong);transform:translateY(-3px)}
+.relcard .art{position:relative;aspect-ratio:1;overflow:hidden;background:#000;border-bottom:1px solid var(--hair)}
+.relcard .art img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1) brightness(.82);transition:filter .25s,transform .4s}
+.relcard:hover .art img{filter:grayscale(.1) contrast(1.05);transform:scale(1.04)}
+.relcard .code{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.7);border:1px solid var(--hair-strong);font-size:10px;letter-spacing:.2em;color:var(--bone);padding:3px 8px}
+.relcard .body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.relcard .ttl{font-family:"Grenze Gotisch",serif;font-weight:700;font-size:22px;line-height:1}
+.relcard .sub{font-size:11.5px;letter-spacing:.04em;color:var(--ash)}
+.relcard .tags{margin-top:auto;padding-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+.relcard .pill{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ash-dim);border:1px solid var(--hair);padding:3px 7px}
+
+/* sealed / unannounced slot */
+.relcard.sealed{background:repeating-linear-gradient(45deg,#101010,#101010 9px,#141312 9px,#141312 18px);border-style:dashed}
+.relcard.sealed .art{display:grid;place-items:center;background:transparent}
+.relcard.sealed .qm{font-family:"Grenze Gotisch",serif;font-weight:700;font-size:64px;color:var(--ash-dim)}
+.relcard.sealed .ttl{color:var(--ash-dim)}
+.relcard.sealed:hover{transform:none}
+
+/* relock control */
+.relock{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--hair);color:var(--ash-dim);
+  font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:8px 12px;cursor:pointer}
+.relock:hover{color:var(--blood-bright);border-color:rgba(192,23,23,.5)}
+
+@media (max-width:880px){
+  .vhero .inner,.feat .inner{grid-template-columns:1fr;gap:30px}
+  .vhero .vlogo{justify-self:start;max-width:300px;order:-1}
+  .feat .fveil{background:linear-gradient(to bottom,rgba(10,10,10,.7),rgba(10,10,10,.92))}
+  .feat .cover{max-width:340px}
+  .relgrid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){
+  .relgrid{grid-template-columns:1fr}
+}

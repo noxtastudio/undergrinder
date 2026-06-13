@@ -1,0 +1,90 @@
+/* =========================================================
+   contact.css — undergrinder.studio · contact / submissions
+   extends styles.css tokens.
+   ========================================================= */
+
+.con-head{position:relative;overflow:hidden;border-bottom:1px solid var(--hair);padding-block:clamp(46px,8vh,82px)}
+.con-head .cbg{position:absolute;inset:0;background:url("images/homepage-hero-flyer.jpg") center/cover no-repeat;filter:grayscale(1) brightness(.2) contrast(1.2);opacity:.32}
+.con-head .cveil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.7),var(--void))}
+.con-head .inner{position:relative;z-index:2}
+.con-head h1{margin:14px 0 0;font-family:"Grenze Gotisch",serif;font-weight:700;font-size:clamp(46px,8vw,108px);line-height:.86}
+.con-head h1 .dot{color:var(--blood-bright)}
+.con-head .ethos{margin:22px 0 0;max-width:62ch;color:var(--ash);font-size:15.5px;line-height:1.9}
+.con-head .ethos b{color:var(--bone);font-weight:400}
+
+/* two-column body */
+.con-body{padding-block:clamp(48px,8vh,96px)}
+.con-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(34px,6vw,84px);align-items:start}
+
+/* left — channels */
+.chan-col .kicker{margin-bottom:24px}
+.channel{
+  display:flex;align-items:center;gap:18px;text-decoration:none;color:var(--bone);
+  border-top:1px solid var(--hair);padding:22px 4px;transition:padding-left .2s,background .2s;
+}
+.channel:last-of-type{border-bottom:1px solid var(--hair)}
+.channel:hover{padding-left:14px;background:linear-gradient(90deg,rgba(154,20,20,.08),transparent)}
+.channel .gx{
+  flex:none;width:50px;height:50px;border:1px solid var(--hair-strong);display:grid;place-items:center;
+  font-size:22px;background:#000;transition:border-color .2s}
+.channel:hover .gx{border-color:var(--blood)}
+.channel .meta{flex:1;min-width:0}
+.channel .nm{font-family:"Grenze Gotisch",serif;font-weight:700;font-size:24px;line-height:1}
+.channel .hd{font-size:12px;color:var(--ash);letter-spacing:.04em;margin-top:4px}
+.channel .hd b{color:var(--ash-dim);font-weight:400}
+.channel .go{flex:none;color:var(--ash-dim);font-size:18px;transition:color .2s,transform .2s}
+.channel:hover .go{color:var(--blood-bright);transform:translateX(4px)}
+
+.chan-aside{margin-top:30px;border:1px dashed var(--hair-strong);padding:18px 20px}
+.chan-aside .kicker{margin-bottom:12px}
+.chan-aside p{margin:0;color:var(--ash);font-size:13px;line-height:1.85}
+.chan-aside p b{color:var(--bone);font-weight:400}
+
+/* right — submission form */
+.subm{border:1px solid var(--hair-strong);background:var(--panel);padding:clamp(22px,3vw,34px);position:relative}
+.subm::before{content:"";position:absolute;top:-1px;left:24px;right:24px;height:2px;background:var(--blood)}
+.subm h2{margin:0;font-family:"Grenze Gotisch",serif;font-weight:700;font-size:clamp(26px,3.4vw,40px);line-height:.98}
+.subm .lead{margin:12px 0 0;color:var(--ash);font-size:13.5px;line-height:1.8}
+.subm .lead b{color:var(--bone);font-weight:400}
+
+.field{margin-top:18px;display:flex;flex-direction:column;gap:7px}
+.field label{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ash-dim)}
+.field label .req{color:var(--blood-bright)}
+.field input,.field textarea,.field select{
+  font-family:"Space Mono",monospace;font-size:14px;color:var(--bone);background:rgba(0,0,0,.4);
+  border:1px solid var(--hair-strong);padding:12px 13px;outline:none;transition:border-color .16s,box-shadow .16s;
+  width:100%;
+}
+.field textarea{resize:vertical;min-height:110px;line-height:1.7}
+.field select{appearance:none;-webkit-appearance:none;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--ash-dim) 50%),linear-gradient(135deg,var(--ash-dim) 50%,transparent 50%);
+  background-position:calc(100% - 18px) calc(1.2em),calc(100% - 13px) calc(1.2em);background-size:5px 5px,5px 5px;background-repeat:no-repeat;}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--blood);box-shadow:0 0 0 1px rgba(192,23,23,.35)}
+.field input::placeholder,.field textarea::placeholder{color:var(--ash-dim)}
+.field.invalid input,.field.invalid textarea{border-color:var(--blood)}
+/* kill browser autofill yellow — keep dark bg + bone text */
+.field input:-webkit-autofill,
+.field input:-webkit-autofill:hover,
+.field input:-webkit-autofill:focus,
+.field input:-webkit-autofill:active,
+.field select:-webkit-autofill,
+.field textarea:-webkit-autofill{
+  -webkit-text-fill-color:var(--bone);caret-color:var(--bone);
+  -webkit-box-shadow:0 0 0 1000px #060606 inset;box-shadow:0 0 0 1000px #060606 inset;
+  border:1px solid var(--hair-strong);
+  transition:background-color 9999s ease-out 0s;
+}
+
+.subm .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.subm .actions{margin-top:24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.subm .note{font-size:11px;color:var(--ash-dim);letter-spacing:.04em;line-height:1.7;flex:1;min-width:160px}
+.subm .sent{margin-top:16px;border:1px solid rgba(192,23,23,.5);background:rgba(154,20,20,.08);padding:13px 15px;color:var(--bone);font-size:13px;display:none}
+.subm .sent.show{display:block}
+.subm .sent b{color:var(--blood-bright);font-weight:400}
+
+@media (max-width:840px){
+  .con-grid{grid-template-columns:1fr;gap:44px}
+}
+@media (max-width:480px){
+  .subm .row2{grid-template-columns:1fr}
+}

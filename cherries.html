@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>🍒 …do you like cherries?… 🔒</title>
+<meta name="description" content="Do You Like Cherries? Productions — members only. ...limited editions... ...disgusting as always..." />
+<meta name="robots" content="noindex" />
+<link rel="icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="cherries.css" />
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="scan" aria-hidden="true"></div>
+
+<!-- ============ NAV (shared) ============ -->
+<header class="nav">
+  <div class="wrap row">
+    <a class="brandmark" href="index.html" aria-label="undergrinder.studio home">
+      <span class="mk">🥩</span>
+      <span class="wm">under<b>grinder</b>.studio</span>
+    </a>
+    <nav class="links" aria-label="primary">
+      <a href="index.html">home</a>
+      <a class="cur gated" href="cherries.html"><span class="g">🍒</span> cherries <span class="lk">🔒</span></a>
+      <a href="releases.html"><span class="g">💀</span> releases</a>
+      <a class="gated" href="promotions.html">promotion <span class="lk">🔒</span></a>
+      <a href="contact.html">contact</a>
+    </nav>
+    <button class="burger" aria-label="open menu" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer">
+  <div class="scrim" data-close></div>
+  <div class="panel" role="dialog" aria-label="menu">
+    <div class="dhead">
+      <span class="kicker">menu</span>
+      <button class="x" data-close aria-label="close menu">✕</button>
+    </div>
+    <a href="index.html">🥩 home</a>
+    <a href="cherries.html">🍒 cherries <span class="lk">🔒</span></a>
+    <a href="releases.html">💀 releases</a>
+    <a href="promotions.html">promotion <span class="lk">🔒</span></a>
+    <a href="contact.html">contact</a>
+  </div>
+</div>
+
+<!-- ============ THE GATE ============ -->
+<section class="gate" id="gate" aria-label="password gate">
+  <div class="gate-bg" aria-hidden="true"></div>
+  <div class="gate-bg2" aria-hidden="true"></div>
+  <div class="gate-vig" aria-hidden="true"></div>
+
+  <div class="gate-card">
+    <div class="seal" aria-hidden="true"><span>🍒</span></div>
+    <div class="kicker">do you like cherries? productions</div>
+    <h1 class="black">…the vault is sealed…</h1>
+    <p class="voice">members only. <b>…limited editions…</b> <b>…disgusting as always…</b><br>speak the word and the cherries open.</p>
+
+    <form class="gate-form" id="gateForm" autocomplete="off">
+      <div class="gate-field">
+        <span class="pre" aria-hidden="true">🔒</span>
+        <input id="gateInput" type="password" name="pw" placeholder="enter the password" aria-label="password" autocomplete="off" spellcheck="false" />
+      </div>
+      <button class="btn blood enter" type="submit">unlock the vault <span class="arr">▸</span></button>
+      <div class="gate-msg" id="gateMsg" role="status" aria-live="polite"></div>
+    </form>
+
+    <p class="gate-note">no password? the cherries are handed out to insiders — <a href="contact.html">request access</a> or find us on <a href="https://www.discogs.com/seller/EDROPS/profile" target="_blank" rel="noopener">discogs</a>.</p>
+    <a class="gate-back" href="index.html">← back to undergrinder.studio</a>
+  </div>
+</section>
+
+<!-- ============ THE VAULT (revealed) ============ -->
+<main class="vault" id="vault">
+
+  <!-- vault hero -->
+  <section class="vhero">
+    <div class="vbg" aria-hidden="true"></div>
+    <div class="vveil" aria-hidden="true"></div>
+    <div class="wrap inner">
+      <div class="copy">
+        <span class="badge"><span class="d"></span> inside · members area</span>
+        <h1 class="black">…do you like cherries? productions…</h1>
+        <p class="voice">
+          …second label…<br>
+          …announced in <b>2026</b>…<br>
+          …<b>limited editions</b>…<br>
+          …<b>disgusting as always</b>…
+        </p>
+        <div class="vmeta">
+          <span>cat. <b>dylcx</b></span>
+          <span>est. <b>mmxxvi</b></span>
+          <span>successor to <b>url</b></span>
+        </div>
+      </div>
+      <div class="vlogo">
+        <img src="images/dylc-logo.jpg" alt="Do You Like Cherries? Productions — skull, knives and cherry logo" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- featured / first dispatch -->
+  <section class="feat">
+    <div class="fbg" aria-hidden="true"></div>
+    <div class="fveil" aria-hidden="true"></div>
+    <div class="wrap inner rv">
+      <div class="cover">
+        <span class="flag">dylcx001 · first dispatch</span>
+        <img src="images/dylcx001-cover.jpg" alt="DYLCX001 — Forsaken Memories 'n Cursed Thoughts cover art" loading="lazy" />
+      </div>
+      <div class="copy">
+        <div class="kicker">dylcx001 · do you like cherries? productions</div>
+        <h2 class="black glitch">…forsaken memories 'n cursed thoughts…</h2>
+        <p class="desc">…a music book… the inaugural release of the imprint. hear it before it disappears.</p>
+
+        <div class="player" data-src="https://media.undergrinder.studio/dylcx001-preview.mp3">
+          <button class="pp" aria-label="play preview"></button>
+          <div class="body">
+            <div class="meta">
+              <span class="tname">dylcx001 · preview</span>
+              <span class="time">0:00 / --:--</span>
+            </div>
+            <div class="seek" role="slider" aria-label="seek" tabindex="0"><div class="fill"></div></div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn blood" href="https://media.undergrinder.studio/dylcx001.zip" download>download — full ▸</a>
+          <span class="chip"><span class="dot"></span> limited edition</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- dispatches grid -->
+  <section class="sec dispatch">
+    <div class="wrap">
+      <div class="head rv">
+        <div class="kicker">the catalogue · dylcx</div>
+        <h2 class="black glitch">…dispatches…</h2>
+        <p>everything the new imprint has let out of the dark. the catalogue grows as the rot spreads — sealed slots are next, unannounced.</p>
+      </div>
+      <div class="relgrid rv">
+        <article class="relcard">
+          <div class="art">
+            <span class="code">DYLCX001</span>
+            <img src="images/dylcx001-cover.jpg" alt="DYLCX001 cover" loading="lazy" />
+          </div>
+          <div class="body">
+            <div class="ttl black">…forsaken memories 'n cursed thoughts…</div>
+            <div class="sub">…a music book… · 2026</div>
+            <div class="tags">
+              <span class="pill">first dispatch</span>
+              <span class="pill">limited</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="relcard sealed" aria-label="unannounced">
+          <div class="art"><span class="qm" aria-hidden="true">?</span></div>
+          <div class="body">
+            <div class="ttl black">DYLCX002</div>
+            <div class="sub">…sealed… …unannounced…</div>
+            <div class="tags"><span class="pill">coming</span></div>
+          </div>
+        </article>
+
+        <article class="relcard sealed" aria-label="unannounced">
+          <div class="art"><span class="qm" aria-hidden="true">?</span></div>
+          <div class="body">
+            <div class="ttl black">DYLCX003</div>
+            <div class="sub">…sealed… …unannounced…</div>
+            <div class="tags"><span class="pill">coming</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer (shared) -->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="top">
+        <div class="lockup">
+          <div class="wm black">under<b>grinder</b>.studio</div>
+          <p>do you like cherries? productions 2026<br>members area · …disgusting as always…</p>
+        </div>
+        <div class="ext">
+          <span class="kicker" style="margin-bottom:6px">find us in the dark</span>
+          <a href="https://www.discogs.com/seller/EDROPS/profile" target="_blank" rel="noopener">discogs — seller <span class="ar">▸</span></a>
+          <a href="https://www.youtube.com/@urlimited0" target="_blank" rel="noopener">youtube — @urlimited0 <span class="ar">▸</span></a>
+          <a href="contact.html">contact / submissions <span class="ar">▸</span></a>
+        </div>
+      </div>
+      <div class="divider" style="margin-top:42px">
+        <span class="mark"></span>
+        <span class="reg">cat. dylcx</span>
+        <span class="bar"></span>
+        <span class="reg">members only</span>
+        <span class="mark"></span>
+      </div>
+      <div class="base">
+        <span><button class="relock" data-relock>🔒 seal the vault</button></span>
+        <span>poland · diy · anti-commercial</span>
+        <span>v1.0</span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script src="app.js"></script>
+<script src="cherries.js"></script>
+</body>
+</html>

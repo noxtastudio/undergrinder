@@ -1,0 +1,132 @@
+/* =========================================================
+   promotions.css — undergrinder.studio · promotion
+   the gate + the channel. extends styles.css tokens.
+   mirrors the cherries lock pattern.
+   ========================================================= */
+
+/* ===================== THE GATE ===================== */
+.gate{
+  position:fixed;inset:0;z-index:500;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--void);overflow:hidden;
+  transition:opacity .5s ease, visibility .5s;
+}
+body.unlocked .gate{opacity:0;visibility:hidden;pointer-events:none}
+body.unlocked{overflow:auto}
+body.locked{overflow:hidden}
+
+.gate-vig{position:absolute;inset:0;background:
+  radial-gradient(120% 100% at 50% 45%,transparent 0%,rgba(10,10,10,.7) 55%,var(--void) 100%);}
+.gate-bg2{position:absolute;inset:0;mix-blend-mode:screen;opacity:.55;
+  background:radial-gradient(60% 50% at 50% 42%,rgba(154,20,20,.24),transparent 70%);}
+
+.gate-card{
+  position:relative;z-index:3;width:min(92vw,520px);
+  background:linear-gradient(180deg,rgba(20,18,18,.86),rgba(8,8,8,.92));
+  border:1px solid var(--hair-strong);
+  box-shadow:0 50px 120px -40px #000, 0 0 70px -30px rgba(192,23,23,.45);
+  padding:clamp(28px,5vw,46px);
+  text-align:center;
+}
+.gate-card::before,.gate-card::after{content:"";position:absolute;width:18px;height:18px;border:1px solid var(--blood)}
+.gate-card::before{top:8px;left:8px;border-right:none;border-bottom:none}
+.gate-card::after{bottom:8px;right:8px;border-left:none;border-top:none}
+
+.seal{
+  width:74px;height:74px;margin:0 auto 22px;border-radius:50%;
+  border:1px solid rgba(192,23,23,.55);display:grid;place-items:center;
+  background:radial-gradient(circle at 50% 40%,rgba(154,20,20,.35),rgba(0,0,0,.6));
+  box-shadow:0 0 34px -8px rgba(192,23,23,.6), inset 0 0 18px rgba(0,0,0,.7);
+  position:relative;
+}
+.seal::after{content:"";position:absolute;inset:-7px;border:1px dashed rgba(192,23,23,.35);border-radius:50%}
+.seal span{font-size:30px;filter:saturate(1.1)}
+
+.gate-card .kicker{justify-content:center;margin-bottom:16px;color:var(--blood-bright)}
+.gate-card .kicker::before{background:var(--blood)}
+.gate-card h1{
+  margin:0;font-family:"Grenze Gotisch",serif;font-weight:700;color:var(--blood-bright);
+  font-size:clamp(30px,6vw,52px);line-height:1.02;
+}
+.gate-card .voice{margin:20px auto 0;max-width:40ch;color:var(--ash);font-size:14px;line-height:1.8;text-align:center}
+.gate-card .voice b{color:var(--bone);font-weight:400}
+
+.gate-form{margin-top:30px;display:flex;flex-direction:column;gap:12px}
+.gate-field{
+  display:flex;align-items:stretch;border:1px solid var(--hair-strong);background:rgba(0,0,0,.5);
+  transition:border-color .18s, box-shadow .18s;
+}
+.gate-field:focus-within{border-color:var(--blood);box-shadow:0 0 0 1px rgba(192,23,23,.4),0 0 30px -10px rgba(192,23,23,.6)}
+.gate-field .pre{display:grid;place-items:center;padding:0 14px;color:var(--blood-bright);border-right:1px solid var(--hair);font-size:15px}
+.gate-field input{
+  flex:1;min-width:0;background:transparent;border:none;outline:none;color:var(--bone);
+  font-family:"Space Mono",monospace;font-size:15px;letter-spacing:.18em;padding:15px 14px;
+}
+.gate-field input::placeholder{color:var(--ash-dim);letter-spacing:.12em}
+/* kill browser autofill yellow — keep dark bg + bone text */
+.gate-field input:-webkit-autofill,
+.gate-field input:-webkit-autofill:hover,
+.gate-field input:-webkit-autofill:focus{
+  -webkit-text-fill-color:var(--bone);caret-color:var(--bone);
+  -webkit-box-shadow:0 0 0 1000px #060606 inset;box-shadow:0 0 0 1000px #060606 inset;
+  transition:background-color 9999s ease-out 0s;
+}
+.gate-form .enter{justify-content:center;padding:15px}
+.gate-note{margin-top:6px;font-size:11px;letter-spacing:.04em;color:var(--ash-dim);line-height:1.7}
+.gate-note a{color:var(--ash);text-decoration:underline;text-underline-offset:3px}
+.gate-note a:hover{color:var(--blood-bright)}
+.gate-msg{min-height:18px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--blood-bright);opacity:0;transition:opacity .15s}
+.gate-msg.show{opacity:1}
+.gate-back{margin-top:20px;display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ash-dim);text-decoration:none}
+.gate-back:hover{color:var(--bone)}
+
+@media (prefers-reduced-motion:no-preference){
+  .gate-card.deny{animation:deny .4s cubic-bezier(.36,.07,.19,.97)}
+}
+@keyframes deny{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}30%,50%,70%{transform:translateX(-8px)}40%,60%{transform:translateX(8px)}}
+.gate-card.deny{border-color:var(--blood)}
+
+/* ===================== THE CHANNEL ===================== */
+.vault{display:none}
+body.unlocked .vault{display:block}
+
+/* promo hero */
+.phero{position:relative;overflow:hidden;border-bottom:1px solid var(--hair);padding-block:clamp(48px,8vh,96px)}
+.phero .pbg{position:absolute;inset:0;background:
+  radial-gradient(80% 60% at 80% 30%,rgba(154,20,20,.18),transparent 70%);opacity:.9}
+.phero .pveil{position:absolute;inset:0;background:linear-gradient(90deg,var(--void) 30%,rgba(10,10,10,.4) 100%)}
+.phero .inner{position:relative;z-index:2;max-width:60ch}
+.phero .badge{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(192,23,23,.5);color:var(--blood-bright);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;padding:6px 12px}
+.phero .badge .d{width:6px;height:6px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+.phero h1{margin:18px 0 0;font-family:"Grenze Gotisch",serif;font-weight:700;color:var(--blood-bright);font-size:clamp(38px,7vw,84px);line-height:.9}
+.phero .voice{margin:18px 0 0;color:var(--ash);font-size:15px;line-height:1.85;max-width:44ch}
+.phero .voice b{color:var(--bone);font-weight:400}
+.phero .pmeta{margin-top:24px;display:flex;gap:18px;flex-wrap:wrap;color:var(--ash-dim);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.phero .pmeta b{color:var(--ash);font-weight:400}
+
+/* what we push */
+.push .head{margin-bottom:42px}
+.push .head h2{margin:10px 0 0;font-family:"Grenze Gotisch",serif;font-weight:700;font-size:clamp(28px,4.6vw,52px);line-height:.98}
+.push .head p{margin:14px 0 0;color:var(--ash);font-size:14.5px;line-height:1.8;max-width:56ch}
+
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2.4vw,22px)}
+.pcard{border:1px solid var(--hair-strong);background:var(--panel);padding:22px 20px 24px;display:flex;flex-direction:column;gap:10px;transition:border-color .18s,transform .18s,background .18s}
+.pcard:hover{transform:translateY(-3px);border-color:rgba(192,23,23,.5);background:linear-gradient(180deg,rgba(154,20,20,.06),transparent)}
+.pcard .gx{width:46px;height:46px;border:1px solid var(--hair-strong);display:grid;place-items:center;font-size:20px;background:#000;transition:border-color .2s}
+.pcard:hover .gx{border-color:var(--blood)}
+.pcard h3{margin:6px 0 0;font-family:"Grenze Gotisch",serif;font-weight:700;font-size:24px;line-height:1}
+.pcard p{margin:0;color:var(--ash);font-size:12.5px;line-height:1.8}
+
+.pcta{margin-top:36px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+
+/* relock control */
+.relock{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--hair);color:var(--ash-dim);
+  font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:8px 12px;cursor:pointer}
+.relock:hover{color:var(--blood-bright);border-color:rgba(192,23,23,.5)}
+
+@media (max-width:880px){
+  .pgrid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:480px){
+  .pgrid{grid-template-columns:1fr}
+}
