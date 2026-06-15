@@ -509,3 +509,33 @@ html.wall .warn,html.wall .sec.alt,html.wall .foot{background:rgba(7,7,7,.78)}
 /* footer maker credit */
 .foot .base .credit{color:var(--ash);text-decoration:none;transition:color .15s}
 .foot .base .credit:hover{color:var(--blood-bright)}
+
+/* ====================== THE SERIES (placeholder reels) ====================== */
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,20px)}
+.scard{
+  position:relative;border:1px solid var(--hair-strong);overflow:hidden;
+  aspect-ratio:16/9;display:grid;place-items:center;
+  background:linear-gradient(160deg,#101010,#070707);transition:border-color .2s;
+}
+.scard::before{ /* scanline texture */
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.25;
+  background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.35) 2px 3px);
+}
+.scard:hover{border-color:rgba(192,23,23,.5)}
+.scard .snum{
+  position:relative;z-index:1;font-family:"Grenze Gotisch",serif;font-weight:700;
+  font-size:clamp(46px,7vw,92px);line-height:1;color:var(--hair-strong);letter-spacing:.02em;
+}
+.scard .sov{
+  position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:14px;background:linear-gradient(to top,rgba(0,0,0,.82),transparent 62%);pointer-events:none;
+}
+.scard .sov .ttl{font-family:"Grenze Gotisch",serif;font-weight:700;font-size:clamp(18px,2vw,24px);line-height:1}
+.scard .sov .meta{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ash-dim);margin-top:6px}
+.scard .soonflag{
+  position:absolute;top:10px;left:10px;z-index:3;
+  font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--blood-bright);
+  border:1px solid rgba(192,23,23,.5);padding:4px 8px;background:rgba(0,0,0,.4);
+}
+@media (max-width:900px){.sgrid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.sgrid{grid-template-columns:1fr}}
