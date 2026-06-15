@@ -428,10 +428,17 @@ html.age-locked::before{content:"";position:fixed;inset:0;background:var(--void)
   animation:bloodfall 2.2s cubic-bezier(.55,0,.85,.4) infinite;
 }
 .agegate .gatedrip .drop.d2{animation-delay:1.1s}
+/* scattered drops across the gate top (mirrors the loader's fdrops) */
+.agegate .fdrop{
+  position:absolute;top:0;z-index:1;width:10px;height:10px;margin-left:-5px;opacity:0;
+  border-radius:50% 50% 50% 50% / 62% 62% 40% 40%;
+  background:var(--blood-bright);filter:drop-shadow(0 0 5px rgba(192,23,23,.5));
+  animation:bloodfall 1.9s cubic-bezier(.55,0,.85,.4) infinite;
+}
 @keyframes tricklegrow{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1)}}
 @media (prefers-reduced-motion:reduce){
   .agegate .gtrickle{animation:none;transform:scaleY(1)}
-  .agegate .gatedrip .drop{animation:none}
+  .agegate .gatedrip .drop,.agegate .fdrop{animation:none}
 }
 
 /* ---- preloader: blood drip + counter + bar ---- */

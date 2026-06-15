@@ -15,6 +15,13 @@
     gate.setAttribute('aria-labelledby','ageTitle');
     gate.innerHTML =
       '<div class="gatedrip" aria-hidden="true"><span class="gtrickle"></span><span class="drop"></span><span class="drop d2"></span></div>' +
+      '<span class="fdrop" style="left:9%;width:8px;height:8px;animation-delay:.1s;animation-duration:2s"></span>' +
+      '<span class="fdrop" style="left:24%;animation-delay:.9s;animation-duration:1.7s"></span>' +
+      '<span class="fdrop" style="left:38%;width:7px;height:7px;animation-delay:.45s;animation-duration:2.3s"></span>' +
+      '<span class="fdrop" style="left:61%;width:11px;height:11px;animation-delay:1.25s;animation-duration:1.8s"></span>' +
+      '<span class="fdrop" style="left:73%;animation-delay:.3s;animation-duration:2.1s"></span>' +
+      '<span class="fdrop" style="left:84%;width:8px;height:8px;animation-delay:1.6s;animation-duration:1.6s"></span>' +
+      '<span class="fdrop" style="left:95%;width:6px;height:6px;animation-delay:.7s;animation-duration:2.4s"></span>' +
       '<div class="agegate-inner">' +
         '<div class="age-mark" aria-hidden="true">☣</div>' +
         '<div class="kicker center">caution · adults only</div>' +
