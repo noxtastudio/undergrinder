@@ -4,6 +4,120 @@
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
+  /* ---- 18+ age gate (site-wide; the head flash-guard sets .age-locked) ----
+     UX gate only, not security. Remembers consent ~30 days in localStorage. */
+  if(document.documentElement.classList.contains('age-locked')){
+    var AGE_KEY = 'ug_age_verified', AGE_MS = 30*24*60*60*1000;
+    var gate = document.createElement('div');
+    gate.className = 'agegate';
+    gate.setAttribute('role','dialog');
+    gate.setAttribute('aria-modal','true');
+    gate.setAttribute('aria-labelledby','ageTitle');
+    gate.innerHTML =
+      '<div class="agegate-inner">' +
+        '<div class="age-mark" aria-hidden="true">☣</div>' +
+        '<div class="kicker center">caution · adults only</div>' +
+        '<h1 class="black" id="ageTitle">…you must be of age…</h1>' +
+        '<p>undergrinder.studio is the home of an extreme underground music / noise label — gorenoise, harsh noise, power electronics, pornogrind. expect graphic artwork, extreme volume, and themes of violence, death and decay. nothing here is cleaned up or softened.</p>' +
+        '<p class="age-q">…are you 18 or older?…</p>' +
+        '<div class="age-cta">' +
+          '<button class="btn blood" id="ageEnter" type="button">i am 18+ — enter <span class="arr">▸</span></button>' +
+          '<a class="btn" id="ageLeave" href="https://www.google.com">take me out</a>' +
+        '</div>' +
+        '<p class="age-fine">by entering you confirm you are of legal age in your jurisdiction. …disgusting as always…</p>' +
+      '</div>';
+    document.body.appendChild(gate);
+    requestAnimationFrame(function(){ gate.classList.add('show'); });
+    gate.querySelector('#ageEnter').addEventListener('click', function(){
+      try{ localStorage.setItem(AGE_KEY, String(Date.now()+AGE_MS)); }catch(e){}
+      document.documentElement.classList.remove('age-locked');
+      gate.classList.remove('show');
+      setTimeout(function(){ if(gate.parentNode) gate.parentNode.removeChild(gate); }, 420);
+    });
+    gate.querySelector('#ageLeave').addEventListener('click', function(e){
+      e.preventDefault(); window.location.href = 'https://www.google.com';
+    });
+  }
+
+  /* ---- preloader (homepage only) — counter + bar + blood trickle ---- */
+  var loader = document.getElementById('loader');
+  if(loader){
+    var lnum = document.getElementById('loaderNum');
+    var lbar = document.getElementById('loaderBar');
+    var ltrk = document.getElementById('loaderTrickle');
+    var pad3 = function(n){ return ('00'+n).slice(-3); };
+    var dismiss = function(){
+      loader.classList.add('done');
+      setTimeout(function(){ loader.style.display = 'none'; }, 950);
+    };
+    if(reduce){
+      if(lnum) lnum.textContent = '100';
+      if(lbar) lbar.style.transform = 'scaleX(1)';
+      if(ltrk) ltrk.style.transform = 'scaleY(1)';
+      setTimeout(dismiss, 320);
+    } else {
+      var lstart = null, LDUR = 1600;
+      var lstep = function(ts){
+        if(lstart === null) lstart = ts;
+        var p = Math.min((ts-lstart)/LDUR, 1);
+        var e = 1 - Math.pow(1-p, 3); // easeOutCubic
+        if(lnum) lnum.textContent = pad3(Math.round(e*100));
+        if(lbar) lbar.style.transform = 'scaleX('+e+')';
+        if(ltrk) ltrk.style.transform = 'scaleY('+e+')';
+        if(p < 1) requestAnimationFrame(lstep); else setTimeout(dismiss, 180);
+      };
+      requestAnimationFrame(lstep);
+    }
+  }
+
+  /* ---- catalogue-wall background (homepage) — densify + parallax drift ---- */
+  var wallEl = document.querySelector('.bgwall .wall');
+  var moveWall = function(){};
+  if(wallEl){
+    // clone the cover set until the wall is ~2.4× the viewport — dense, and
+    // tall enough to give the parallax drift room to move
+    var orig = [], i;
+    for(i=0;i<wallEl.children.length;i++) orig.push(wallEl.children[i]);
+    var target = window.innerHeight * 2.4, guard = 0;
+    while(wallEl.offsetHeight < target && guard < 14){
+      var frag = document.createDocumentFragment();
+      for(i=0;i<orig.length;i++) frag.appendChild(orig[i].cloneNode(true));
+      wallEl.appendChild(frag);
+      guard++;
+    }
+    if(!reduce){
+      moveWall = function(){
+        var max = wallEl.offsetHeight - window.innerHeight;
+        var shift = Math.min(window.scrollY * 0.14, max > 0 ? max : 0);
+        wallEl.style.transform = 'translateX(-50%) translateY(' + (-shift).toFixed(1) + 'px)';
+      };
+      var wTick = false;
+      window.addEventListener('scroll', function(){
+        if(!wTick){ wTick = true; requestAnimationFrame(function(){ moveWall(); wTick = false; }); }
+      }, {passive:true});
+      window.addEventListener('resize', moveWall, {passive:true});
+      moveWall();
+    }
+  }
+
+  /* ---- background-imagery toggle (remembers choice) ---- */
+  var wallToggle = document.getElementById('wallToggle');
+  if(wallToggle){
+    try{ if(localStorage.getItem('ug_wall')==='0') document.documentElement.classList.remove('wall'); }catch(e){}
+    var syncWall = function(){
+      var on = document.documentElement.classList.contains('wall');
+      wallToggle.setAttribute('aria-pressed', String(on));
+      wallToggle.textContent = on ? '⊞ bg · on' : '⊞ bg · off';
+    };
+    syncWall();
+    wallToggle.addEventListener('click', function(){
+      var on = document.documentElement.classList.toggle('wall');
+      try{ localStorage.setItem('ug_wall', on ? '1' : '0'); }catch(e){}
+      syncWall();
+      if(on) moveWall();
+    });
+  }
+
   /* ---- nav scrolled state ---- */
   var nav = document.querySelector('.nav');
   var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 12); };

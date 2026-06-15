@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="wall">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,9 +12,65 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<script>/* 18+ flash guard — black the page before render if not yet verified */(function(){try{var v=+localStorage.getItem('ug_age_verified');if(!(v>Date.now()))document.documentElement.classList.add('age-locked');}catch(e){document.documentElement.classList.add('age-locked');}})();</script>
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+<!-- ============ BACKGROUND — catalogue wall (toggled by html.wall) ============ -->
+<div class="bgwall" aria-hidden="true">
+  <div class="wall">
+    <img src="images/releases/url002.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url005.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url009.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url012.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url015.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url021.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url024.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url027.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url030.png" alt="" loading="lazy" />
+    <img src="images/releases/url033.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url036.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url040.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url043.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url046.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url049.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url052.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url055.png" alt="" loading="lazy" />
+    <img src="images/releases/url058.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url061.png" alt="" loading="lazy" />
+    <img src="images/releases/url064.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url069.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url072.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url075.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url080.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url083.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url086.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url089.jpg" alt="" loading="lazy" />
+    <img src="images/releases/url092.jpg" alt="" loading="lazy" />
+  </div>
+</div>
+<button class="wall-toggle" id="wallToggle" type="button" aria-pressed="true" title="toggle background imagery">⊞ bg</button>
+
+<!-- ============ PRELOADER (homepage) — blood drip ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="drip">
+    <span class="trickle" id="loaderTrickle"></span>
+    <span class="drop"></span>
+    <span class="drop d2"></span>
+  </div>
+  <span class="drop fdrop" style="left:9%;width:8px;height:8px;animation-delay:.1s;animation-duration:2s"></span>
+  <span class="drop fdrop" style="left:24%;animation-delay:.9s;animation-duration:1.7s"></span>
+  <span class="drop fdrop" style="left:38%;width:7px;height:7px;animation-delay:.45s;animation-duration:2.3s"></span>
+  <span class="drop fdrop" style="left:61%;width:11px;height:11px;animation-delay:1.25s;animation-duration:1.8s"></span>
+  <span class="drop fdrop" style="left:73%;animation-delay:.3s;animation-duration:2.1s"></span>
+  <span class="drop fdrop" style="left:84%;width:8px;height:8px;animation-delay:1.6s;animation-duration:1.6s"></span>
+  <span class="drop fdrop" style="left:95%;width:6px;height:6px;animation-delay:.7s;animation-duration:2.4s"></span>
+  <div class="lwm">under<b>grinder</b></div>
+  <div class="lnum" id="loaderNum">000</div>
+  <div class="lbar" id="loaderBar"></div>
+</div>
+
 <div class="grain" aria-hidden="true"></div>
 <div class="scan" aria-hidden="true"></div>
 

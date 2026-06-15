@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<script>/* 18+ flash guard — black the page before render if not yet verified */(function(){try{var v=+localStorage.getItem('ug_age_verified');if(!(v>Date.now()))document.documentElement.classList.add('age-locked');}catch(e){document.documentElement.classList.add('age-locked');}})();</script>
 <link rel="stylesheet" href="styles.css" />
 <link rel="stylesheet" href="releases.css" />
 </head>
@@ -75,8 +76,8 @@
       <svg viewBox="0 0 24 24"><path d="M10 4a6 6 0 104.47 10.03l4.25 4.25 1.41-1.41-4.25-4.25A6 6 0 0010 4zm0 2a4 4 0 110 8 4 4 0 010-8z"/></svg>
       <input id="search" type="search" placeholder="search title / artist / code…" aria-label="search releases" />
     </label>
-    <div class="chips" id="genreChips" role="group" aria-label="filter by genre"></div>
     <span class="fspacer"></span>
+    <span class="fselect"><select id="genreSel" aria-label="filter by genre"><option value="all">all genres</option></select></span>
     <span class="fselect"><select id="yearSel" aria-label="filter by year"><option value="all">all years</option></select></span>
     <span class="fselect"><select id="sortSel" aria-label="sort">
       <option value="code">by catalogue №</option>

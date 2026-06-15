@@ -121,7 +121,7 @@ var RELEASES = [
   var empty  = document.getElementById('empty');
   var countN = document.getElementById('countN');
   var search = document.getElementById('search');
-  var chipBox= document.getElementById('genreChips');
+  var genreSel= document.getElementById('genreSel');
   var yearSel= document.getElementById('yearSel');
   var sortSel= document.getElementById('sortSel');
   if(!grid) return;
@@ -134,12 +134,10 @@ var RELEASES = [
   var years = RELEASES.map(function(r){return r.year;}).filter(function(v,i,a){return v && a.indexOf(v)===i;}).sort(function(a,b){return b-a;});
   years.forEach(function(y){ var o=document.createElement('option'); o.value=y; o.textContent=y; yearSel.appendChild(o); });
 
-  /* ---- build genre chips ---- */
+  /* ---- build genre dropdown options ---- */
   var present = GENRES.filter(function(g){ return RELEASES.some(function(r){return r.genre===g;}); });
   present.forEach(function(g){
-    var b=document.createElement('button'); b.className='fchip'; b.type='button';
-    b.setAttribute('data-genre',g); b.setAttribute('aria-pressed','false'); b.textContent=g;
-    chipBox.appendChild(b);
+    var o=document.createElement('option'); o.value=g; o.textContent=g; genreSel.appendChild(o);
   });
 
   /* ---- one shared audio element ---- */
@@ -210,17 +208,16 @@ var RELEASES = [
   }
 
   /* ---- filters ---- */
-  var activeGenres={};
   function applyFilters(){
     var q=(search.value||'').trim().toLowerCase();
     var yr=yearSel.value;
-    var gOn=Object.keys(activeGenres).filter(function(k){return activeGenres[k];});
+    var g=genreSel.value;
     var shown=0;
     grid.querySelectorAll('.rcard').forEach(function(c){
       var ok=true;
       if(q && c.getAttribute('data-text').indexOf(q)===-1) ok=false;
       if(ok && yr!=='all' && c.getAttribute('data-year')!==yr) ok=false;
-      if(ok && gOn.length && gOn.indexOf(c.getAttribute('data-genre'))===-1) ok=false;
+      if(ok && g!=='all' && c.getAttribute('data-genre')!==g) ok=false;
       c.classList.toggle('hide',!ok);
       if(ok) shown++;
     });
@@ -231,15 +228,9 @@ var RELEASES = [
   search.addEventListener('input', applyFilters);
   yearSel.addEventListener('change', applyFilters);
   sortSel.addEventListener('change', renderGrid);
-  chipBox.addEventListener('click', function(e){
-    var b=e.target.closest('.fchip'); if(!b) return;
-    var g=b.getAttribute('data-genre'); activeGenres[g]=!activeGenres[g];
-    b.setAttribute('aria-pressed', String(!!activeGenres[g]));
-    applyFilters();
-  });
+  genreSel.addEventListener('change', applyFilters);
   document.getElementById('clearFilters').addEventListener('click', function(){
-    search.value=''; yearSel.value='all'; activeGenres={};
-    chipBox.querySelectorAll('.fchip').forEach(function(b){b.setAttribute('aria-pressed','false');});
+    search.value=''; yearSel.value='all'; genreSel.value='all';
     applyFilters();
   });
 

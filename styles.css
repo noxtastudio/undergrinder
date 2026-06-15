@@ -377,3 +377,131 @@ img{display:block;max-width:100%}
   .player{flex-wrap:wrap}
   .player .dl{margin-left:0}
 }
+
+/* =========================================================
+   PRELOADER (homepage) + 18+ AGE GATE (site-wide)
+   layered above grain (9000): cover 9990 · gate 9995 · loader 9999
+   ========================================================= */
+
+/* ---- flash guard: black the page instantly if the gate may show ---- */
+html.age-locked{overflow:hidden}
+html.age-locked body{overflow:hidden}
+html.age-locked::before{content:"";position:fixed;inset:0;background:var(--void);z-index:9990}
+
+/* ---- 18+ age gate (overlay injected by app.js) ---- */
+.agegate{
+  position:fixed;inset:0;z-index:9995;
+  display:flex;align-items:center;justify-content:center;padding:var(--gut);
+  background:radial-gradient(120% 90% at 50% -10%,#171717 0%,var(--void) 55%,var(--void2) 100%);
+  opacity:0;transition:opacity .4s ease;
+}
+.agegate.show{opacity:1}
+.agegate::after{ /* scanline mood, matches global .scan */
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.3;z-index:1;
+  background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.25) 2px 3px);
+  mix-blend-mode:multiply;
+}
+.agegate-inner{position:relative;z-index:2;max-width:560px;text-align:center}
+.age-mark{
+  font-size:46px;line-height:1;color:var(--blood-bright);margin-bottom:16px;
+  filter:drop-shadow(0 0 18px rgba(192,23,23,.35));
+}
+.agegate .kicker{justify-content:center;margin-bottom:14px}
+.agegate h1{font-size:clamp(2.2rem,7vw,3.6rem);margin:0 0 .42em}
+.agegate p{color:var(--ash);font-size:14px;line-height:1.7;margin:0 auto .9em;max-width:48ch}
+.agegate .age-q{color:var(--bone);font-size:16px;letter-spacing:.04em}
+.age-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:24px 0 18px}
+.age-fine{font-size:11px;color:var(--ash-dim);letter-spacing:.05em;max-width:44ch}
+@media (prefers-reduced-motion:reduce){.agegate{transition:none}}
+
+/* ---- preloader: blood drip + counter + bar ---- */
+.loader{
+  position:fixed;inset:0;z-index:9999;background:var(--void);overflow:hidden;
+  display:flex;align-items:flex-end;justify-content:space-between;
+  padding:clamp(20px,5vw,64px);will-change:transform;
+}
+.loader.done{transform:translateY(-100%);transition:transform .9s cubic-bezier(.7,0,.2,1)}
+.loader .lwm{
+  position:relative;z-index:2;
+  font-family:"Grenze Gotisch",system-ui,serif;font-weight:700;line-height:1;
+  font-size:clamp(1.5rem,4vw,2.6rem);letter-spacing:.01em;color:var(--bone);
+}
+.loader .lwm b{color:var(--blood-bright)}
+.loader .lnum{
+  position:relative;z-index:2;
+  font-family:"Grenze Gotisch",system-ui,serif;font-weight:700;line-height:.8;
+  font-size:clamp(4rem,15vw,11rem);color:var(--bone);font-feature-settings:"tnum";
+}
+.loader .lbar{
+  position:absolute;left:0;bottom:0;height:3px;width:100%;z-index:3;
+  background:linear-gradient(90deg,var(--blood),var(--blood-bright));
+  transform-origin:0 50%;transform:scaleX(0);
+}
+/* the drip: a trickle running from the top, with drops that fall */
+.loader .drip{position:absolute;top:0;left:50%;transform:translateX(-50%);width:3px;height:46vh;z-index:1;pointer-events:none}
+.loader .drip .trickle{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:linear-gradient(var(--blood-bright),var(--blood));
+  transform-origin:0 0;transform:scaleY(0);
+  box-shadow:0 0 8px rgba(192,23,23,.45);
+}
+.loader .drip .drop{
+  position:absolute;left:50%;margin-left:-6px;top:0;width:12px;height:12px;
+  border-radius:50% 50% 50% 50% / 62% 62% 40% 40%;
+  background:var(--blood-bright);filter:drop-shadow(0 0 6px rgba(192,23,23,.55));opacity:0;
+}
+/* scattered drops across the top edge (positioned via inline left/delay/dur/size) */
+.loader .fdrop{
+  position:absolute;top:0;z-index:1;width:10px;height:10px;margin-left:-5px;opacity:0;
+  border-radius:50% 50% 50% 50% / 62% 62% 40% 40%;
+  background:var(--blood-bright);filter:drop-shadow(0 0 5px rgba(192,23,23,.5));
+}
+@media (prefers-reduced-motion:no-preference){
+  .loader .drip .drop{animation:bloodfall 1.6s cubic-bezier(.55,0,.85,.4) infinite}
+  .loader .drip .drop.d2{animation-delay:.8s;left:50%}
+  .loader .fdrop{animation:bloodfall 1.9s cubic-bezier(.55,0,.85,.4) infinite}
+}
+@keyframes bloodfall{
+  0%{top:0;opacity:0;transform:scale(.55)}
+  12%{opacity:1;transform:scale(1)}
+  72%{opacity:1}
+  100%{top:100vh;opacity:0;transform:scale(.8)}
+}
+
+/* =========================================================
+   CATALOGUE-WALL BACKGROUND (homepage) — toggled by html.wall
+   their own covers: xeroxed (grayscale+contrast) · blood-tinted ·
+   veiled for legibility · drifts slower than scroll (parallax).
+   Toggle OFF restores the original look pixel-for-pixel.
+   ========================================================= */
+.bgwall{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:var(--void);display:none}
+html.wall .bgwall{display:block}
+.bgwall .wall{
+  position:absolute;left:50%;top:-4%;transform:translateX(-50%);width:132vw;
+  display:grid;gap:5px;
+  grid-template-columns:repeat(auto-fill,minmax(clamp(78px,11vw,140px),1fr));
+  filter:grayscale(1) contrast(1.3) brightness(.6);opacity:.15;will-change:transform;
+}
+.bgwall .wall img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.bgwall::before{ /* blood tint over the grayscale covers */
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:var(--blood);mix-blend-mode:color;opacity:.55;
+}
+.bgwall::after{ /* darkening vignette + top/bottom fade so text stays legible */
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:
+    radial-gradient(125% 85% at 50% 42%,rgba(10,10,10,.30) 0%,rgba(10,10,10,.72) 58%,var(--void) 100%),
+    linear-gradient(var(--void),transparent 15%,transparent 85%,var(--void));
+}
+/* let the wall breathe through the otherwise-opaque dark sections */
+html.wall .warn,html.wall .sec.alt,html.wall .foot{background:rgba(7,7,7,.78)}
+
+/* background toggle — discreet, removable demo control */
+.wall-toggle{
+  position:fixed;left:14px;bottom:12px;z-index:8000;
+  font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ash-dim);background:rgba(7,7,7,.6);border:1px solid var(--hair);
+  padding:6px 10px;cursor:pointer;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+  transition:color .15s,border-color .15s;
+}
+.wall-toggle:hover{color:var(--bone);border-color:var(--hair-strong)}

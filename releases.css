@@ -22,14 +22,6 @@
 .search svg{width:14px;height:14px;fill:var(--ash-dim);flex:none}
 .search input{flex:1;min-width:0;background:transparent;border:none;outline:none;color:var(--bone);font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.04em;padding:11px 0}
 .search input::placeholder{color:var(--ash-dim)}
-.chips{display:flex;gap:7px;flex-wrap:wrap}
-.fchip{
-  font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ash);background:transparent;border:1px solid var(--hair-strong);padding:8px 11px;cursor:pointer;
-  transition:color .15s,border-color .15s,background .15s;white-space:nowrap;
-}
-.fchip:hover{color:var(--bone);border-color:var(--hair-strong)}
-.fchip[aria-pressed="true"]{background:var(--blood);border-color:var(--blood);color:var(--bone)}
 .fspacer{flex:1}
 .fselect{position:relative}
 .fselect select{
