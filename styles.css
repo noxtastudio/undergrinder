@@ -414,6 +414,26 @@ html.age-locked::before{content:"";position:fixed;inset:0;background:var(--void)
 .age-fine{font-size:11px;color:var(--ash-dim);letter-spacing:.05em;max-width:44ch}
 @media (prefers-reduced-motion:reduce){.agegate{transition:none}}
 
+/* blood drip behind the 18+ gate (carries over from the loader) */
+.agegate .gatedrip{position:absolute;top:0;left:50%;transform:translateX(-50%);width:3px;height:52vh;z-index:1;pointer-events:none}
+.agegate .gtrickle{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:linear-gradient(var(--blood-bright),var(--blood));transform-origin:0 0;
+  box-shadow:0 0 8px rgba(192,23,23,.45);animation:tricklegrow 3s ease-in infinite;
+}
+.agegate .gatedrip .drop{
+  position:absolute;left:50%;margin-left:-6px;top:0;width:12px;height:12px;
+  border-radius:50% 50% 50% 50% / 62% 62% 40% 40%;
+  background:var(--blood-bright);filter:drop-shadow(0 0 6px rgba(192,23,23,.55));opacity:0;
+  animation:bloodfall 2.2s cubic-bezier(.55,0,.85,.4) infinite;
+}
+.agegate .gatedrip .drop.d2{animation-delay:1.1s}
+@keyframes tricklegrow{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1)}}
+@media (prefers-reduced-motion:reduce){
+  .agegate .gtrickle{animation:none;transform:scaleY(1)}
+  .agegate .gatedrip .drop{animation:none}
+}
+
 /* ---- preloader: blood drip + counter + bar ---- */
 .loader{
   position:fixed;inset:0;z-index:9999;background:var(--void);overflow:hidden;
@@ -505,6 +525,19 @@ html.wall .warn,html.wall .sec.alt,html.wall .foot{background:rgba(7,7,7,.78)}
   transition:color .15s,border-color .15s;
 }
 .wall-toggle:hover{color:var(--bone);border-color:var(--hair-strong)}
+
+/* music play/pause toggle (homepage) */
+.music-toggle{
+  position:fixed;right:14px;bottom:12px;z-index:8000;
+  width:42px;height:42px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+  color:var(--bone);background:rgba(7,7,7,.6);border:1px solid var(--hair-strong);
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+  transition:background .15s,border-color .15s;
+}
+.music-toggle svg{width:15px;height:15px;fill:var(--bone);margin-left:2px}
+.music-toggle.playing svg{margin-left:0}
+.music-toggle.playing{border-color:rgba(192,23,23,.55)}
+.music-toggle:hover{border-color:var(--blood);background:rgba(22,8,8,.7)}
 
 /* footer maker credit */
 .foot .base .credit{color:var(--ash);text-decoration:none;transition:color .15s}

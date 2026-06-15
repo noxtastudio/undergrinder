@@ -14,6 +14,7 @@
     gate.setAttribute('aria-modal','true');
     gate.setAttribute('aria-labelledby','ageTitle');
     gate.innerHTML =
+      '<div class="gatedrip" aria-hidden="true"><span class="gtrickle"></span><span class="drop"></span><span class="drop d2"></span></div>' +
       '<div class="agegate-inner">' +
         '<div class="age-mark" aria-hidden="true">☣</div>' +
         '<div class="kicker center">caution · adults only</div>' +
@@ -33,9 +34,41 @@
       document.documentElement.classList.remove('age-locked');
       gate.classList.remove('show');
       setTimeout(function(){ if(gate.parentNode) gate.parentNode.removeChild(gate); }, 420);
+      startMusic();
     });
     gate.querySelector('#ageLeave').addEventListener('click', function(e){
       e.preventDefault(); window.location.href = 'https://www.google.com';
+    });
+  }
+
+  /* ---- background music (homepage) — starts on age-gate enter; button toggles play/pause ---- */
+  var musicBtn = document.getElementById('musicToggle');
+  var bgAudio = null;
+  var M_PLAY = '<svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>';
+  var M_PAUSE = '<svg viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>';
+  function paintMusic(){
+    if(!musicBtn) return;
+    var playing = bgAudio && !bgAudio.paused;
+    musicBtn.classList.toggle('playing', !!playing);
+    musicBtn.innerHTML = playing ? M_PAUSE : M_PLAY;
+    musicBtn.setAttribute('aria-label', playing ? 'pause music' : 'play music');
+    musicBtn.setAttribute('aria-pressed', String(!!playing));
+  }
+  function startMusic(){
+    if(!musicBtn) return;
+    if(!bgAudio){
+      bgAudio = new Audio('audio/noxious-stimuli.mp3');
+      bgAudio.loop = true; bgAudio.preload = 'none';
+      bgAudio.addEventListener('play', paintMusic);
+      bgAudio.addEventListener('pause', paintMusic);
+    }
+    var pr = bgAudio.play();
+    if(pr && pr.catch) pr.catch(function(){ paintMusic(); });
+  }
+  if(musicBtn){
+    paintMusic();
+    musicBtn.addEventListener('click', function(){
+      if(!bgAudio || bgAudio.paused) startMusic(); else bgAudio.pause();
     });
   }
 
