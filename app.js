@@ -91,7 +91,7 @@
       setTimeout(function(){ loader.style.display = 'none'; }, 950);
     };
     if(reduce){
-      if(lnum) lnum.textContent = '100';
+      if(lnum) lnum.textContent = 'loading… 100%';
       if(lbar) lbar.style.transform = 'scaleX(1)';
       if(ltrk) ltrk.style.transform = 'scaleY(1)';
       setTimeout(dismiss, 320);
@@ -101,7 +101,7 @@
         if(lstart === null) lstart = ts;
         var p = Math.min((ts-lstart)/LDUR, 1);
         var e = 1 - Math.pow(1-p, 3); // easeOutCubic
-        if(lnum) lnum.textContent = pad3(Math.round(e*100));
+        if(lnum) lnum.textContent = 'loading… ' + pad3(Math.round(e*100)) + '%';
         if(lbar) lbar.style.transform = 'scaleX('+e+')';
         if(ltrk) ltrk.style.transform = 'scaleY('+e+')';
         if(p < 1) requestAnimationFrame(lstep); else setTimeout(dismiss, 180);

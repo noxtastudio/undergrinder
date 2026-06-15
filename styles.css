@@ -456,8 +456,8 @@ html.age-locked::before{content:"";position:fixed;inset:0;background:var(--void)
 .loader .lwm b{color:var(--blood-bright)}
 .loader .lnum{
   position:relative;z-index:2;
-  font-family:"Grenze Gotisch",system-ui,serif;font-weight:700;line-height:.8;
-  font-size:clamp(4rem,15vw,11rem);color:var(--bone);font-feature-settings:"tnum";
+  font-family:"Space Mono",monospace;font-weight:700;
+  font-size:13px;letter-spacing:.16em;color:var(--ash);font-feature-settings:"tnum";
 }
 .loader .lbar{
   position:absolute;left:0;bottom:0;height:3px;width:100%;z-index:3;
