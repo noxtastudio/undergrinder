@@ -522,10 +522,26 @@ html.wall .warn,html.wall .sec.alt,html.wall .foot{background:rgba(7,7,7,.78)}
   background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.35) 2px 3px);
 }
 .scard:hover{border-color:rgba(192,23,23,.5)}
-.scard .snum{
-  position:relative;z-index:1;font-family:"Grenze Gotisch",serif;font-weight:700;
-  font-size:clamp(46px,7vw,92px);line-height:1;color:var(--hair-strong);letter-spacing:.02em;
+.scard .reel{ /* poster art (transparent PNG), distorted + blood chromatic split */
+  position:absolute;inset:0;z-index:0;
+  background:var(--art) center/contain no-repeat;
+  filter:contrast(1.15) brightness(1.04)
+         drop-shadow(2px 0 0 rgba(192,23,23,.85)) drop-shadow(-2px 0 0 rgba(120,10,10,.55));
+  animation:reelshake 2.6s steps(1,end) infinite;
 }
+.scard:hover .reel{animation-duration:.5s}
+@keyframes reelshake{
+  0%{transform:translate(0,0)}
+  8%{transform:translate(-2px,1px) skewX(-1.2deg)}
+  16%{transform:translate(2px,-1px)}
+  24%{transform:translate(-1px,0) skewX(.6deg)}
+  30%,49%{transform:translate(0,0)}
+  53%{transform:translate(2px,1px) skewX(1.4deg)}
+  58%{transform:translate(-2px,-1px)}
+  63%{transform:translate(1px,0)}
+  68%,100%{transform:translate(0,0)}
+}
+@media (prefers-reduced-motion:reduce){.scard .reel{animation:none}}
 .scard .sov{
   position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;
   padding:14px;background:linear-gradient(to top,rgba(0,0,0,.82),transparent 62%);pointer-events:none;
