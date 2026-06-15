@@ -505,3 +505,7 @@ html.wall .warn,html.wall .sec.alt,html.wall .foot{background:rgba(7,7,7,.78)}
   transition:color .15s,border-color .15s;
 }
 .wall-toggle:hover{color:var(--bone);border-color:var(--hair-strong)}
+
+/* footer maker credit */
+.foot .base .credit{color:var(--ash);text-decoration:none;transition:color .15s}
+.foot .base .credit:hover{color:var(--blood-bright)}
